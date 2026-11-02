@@ -31,8 +31,9 @@
 @theme inline {
   --color-background: var(--bg-primary);
   --color-foreground: var(--text-primary);
-  --font-sans: "Cabinet Grotesk", system-ui, sans-serif;
-  --font-mono: "Cabinet Grotesk", monospace;
+  --font-sans: "Geist", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Sora", sans-serif;
 }
 
 * {
@@ -46,7 +47,7 @@ html {
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: "Cabinet Grotesk", system-ui, sans-serif;
+  font-family: "Geist", system-ui, sans-serif;
   line-height: 1.6;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
@@ -114,18 +115,17 @@ body {
   opacity: 0.02;
 }
 
-.font-display {
-  font-family: "Cabinet Grotesk", system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+h1, h2, h3, h4, .font-display {
+  font-family: "Sora", sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .font-mono {
-  font-family: "Cabinet Grotesk", monospace;
+  font-family: "JetBrains Mono", monospace;
 }
 
 .font-techno {
-  font-family: var(--font-geist-mono), monospace;
+  font-family: "JetBrains Mono", monospace;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-size: 0.75rem;

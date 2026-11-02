@@ -212,7 +212,7 @@ function Navbar() {
             KJ
           </div>
           <div className="flex flex-col">
-            <span className="font-bold tracking-tight text-sm flex items-center gap-1.5">
+            <span className="font-display font-bold tracking-tight text-sm flex items-center gap-1.5">
               KUNAL JHA
               <span className="text-[10px] font-mono text-[var(--accent)] px-1.5 py-0.5 rounded bg-[var(--accent)]/10 border border-[var(--accent)]/20 hidden sm:inline-block">
                 FOUNDER
@@ -610,7 +610,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
         {/* Project Title & Tagline */}
         <div className="mb-3">
-          <h3 className="font-bold font-mono text-lg text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors">
+          <h3 className="font-bold font-display text-lg text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors">
             <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
               {project.name}
               <ArrowUpRight size={14} className="opacity-70" />
@@ -785,7 +785,7 @@ function Stack() {
 
         {/* Model Arsenal */}
         <div>
-          <h3 className="text-xl font-bold font-mono mb-4 text-[var(--text-primary)] flex items-center gap-2">
+          <h3 className="text-xl font-bold font-display mb-4 text-[var(--text-primary)] flex items-center gap-2">
             <Brain size={20} weight="duotone" className="text-[var(--accent)]" />
             AI Model Arsenal & Task Routing
           </h3>
