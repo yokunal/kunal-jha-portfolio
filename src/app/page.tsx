@@ -964,11 +964,9 @@ function Footer() {
           <span>•</span>
           <span>Founder @ <a href="https://www.zenvix.solutions" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Zenvix Solutions</a> (Siliguri)</span>
         </div>
-        <div className="flex items-center gap-4">
-          <span className="text-amber-400 font-semibold">Ready for Google DevFest 2026</span>
-          <span>•</span>
-          <span>Built with Next.js & Netlify</span>
-        </div>
+        <p className="font-mono text-xs text-[var(--text-secondary)]">
+          Siliguri, West Bengal
+        </p>
       </div>
     </footer>
   );
