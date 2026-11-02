@@ -250,11 +250,16 @@ function Navbar() {
             ZENVIX
           </a>
           <a
-            href="#google-ecosystem"
-            className="font-techno text-xs text-[var(--accent)] hover:underline flex items-center gap-1"
+            href="#stack"
+            className="font-techno text-xs hover:text-[var(--accent)] transition-colors hidden sm:inline-block"
           >
-            <Sparkle size={14} weight="fill" />
-            DEVFEST FOCUS
+            ARSENAL
+          </a>
+          <a
+            href="#contact"
+            className="font-techno text-xs hover:text-[var(--accent)] transition-colors hidden sm:inline-block"
+          >
+            CONTACT
           </a>
           <a
             href="https://www.zenvix.solutions"
@@ -715,12 +720,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 function Projects() {
-  const [filter, setFilter] = useState<"all" | "core" | "google">("all");
+  const [filter, setFilter] = useState<"all" | "core">("all");
 
   const filteredProjects =
     filter === "all"
       ? featuredProjects
-      : featuredProjects.filter((p) => (filter === "core" ? p.category === "core" : p.category === "google"));
+      : featuredProjects.filter((p) => p.featured);
 
   return (
     <section id="projects" className="py-24 px-6">
@@ -734,7 +739,7 @@ function Projects() {
               Featured Projects
             </h2>
             <p className="text-[var(--text-secondary)] max-w-[620px]">
-              Spotlighting autonomous AI systems, high-speed scrapers, Rust terminal harnesses, and Google Workspace cloud architectures.
+              Spotlighting high-performance Rust terminal harnesses, autonomous AI agent swarms, and intelligent scraping pipelines.
             </p>
           </motion.div>
 
@@ -748,7 +753,7 @@ function Projects() {
                   : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
-              All ({featuredProjects.length})
+              All Projects ({featuredProjects.length})
             </button>
             <button
               onClick={() => setFilter("core")}
@@ -760,16 +765,6 @@ function Projects() {
             >
               Core 4 Spotlight
             </button>
-            <button
-              onClick={() => setFilter("google")}
-              className={`px-3 py-1.5 rounded text-xs font-mono transition-colors ${
-                filter === "google"
-                  ? "bg-[var(--accent)] text-[#0a0a0f] font-bold"
-                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              }`}
-            >
-              Google & DevFest
-            </button>
           </div>
         </div>
 
@@ -777,82 +772,6 @@ function Projects() {
           {filteredProjects.map((project, i) => (
             <ProjectCard key={project.name} project={project} index={i} />
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function DevFestHighlight() {
-  return (
-    <section id="google-ecosystem" className="py-20 px-6 bg-[var(--bg-card)]/40 border-y border-[var(--border)]">
-      <div className="max-w-[1140px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="space-y-4 mb-12 text-center max-w-[700px] mx-auto"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/30 text-amber-300 font-mono text-xs">
-            <Sparkle size={14} weight="fill" />
-            <span>BUILT FOR GOOGLE DEVFEST 2026</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Google Ecosystem & Cloud Engineering
-          </h2>
-          <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
-            Hands-on production implementations leveraging Google Workspace, Google Apps Script V8, Google Drive API, Gmail API, and Gemini AI to automate enterprise events and student systems.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <motion.div
-            whileHover={{ y: -4 }}
-            className="p-6 rounded-lg bg-[var(--bg-card)] border border-[var(--border)] hover:border-[var(--accent)] transition-all space-y-3"
-          >
-            <div className="w-10 h-10 rounded border border-[var(--accent)]/30 bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]">
-              <Cpu size={20} weight="duotone" />
-            </div>
-            <h3 className="font-mono font-bold text-base">Google Antigravity CLI (agy)</h3>
-            <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-              Crafted autonomous self-repair coding loops for Google Antigravity CLI (<code className="text-[var(--accent)]">agy</code>) and Claude Code with a 9-step state machine and anti-stuck self-repair protocol.
-            </p>
-            <div className="text-[11px] font-mono text-[var(--accent)]">
-              Autonomous Loop Framework
-            </div>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ y: -4 }}
-            className="p-6 rounded-lg bg-[var(--bg-card)] border border-[var(--border)] hover:border-[var(--accent)] transition-all space-y-3"
-          >
-            <div className="w-10 h-10 rounded border border-[var(--accent)]/30 bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]">
-              <Database size={20} weight="duotone" />
-            </div>
-            <h3 className="font-mono font-bold text-base">Google Sheets API & Cloud Sync</h3>
-            <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-              High-reliability two-way data pipelines syncing structured student records, attendance, and analytics live with cloud spreadsheets via Google Sheets API.
-            </p>
-            <div className="text-[11px] font-mono text-[var(--accent)]">
-              Tutoring Management Dashboard
-            </div>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ y: -4 }}
-            className="p-6 rounded-lg bg-[var(--bg-card)] border border-[var(--border)] hover:border-[var(--accent)] transition-all space-y-3"
-          >
-            <div className="w-10 h-10 rounded border border-[var(--accent)]/30 bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]">
-              <Brain size={20} weight="duotone" />
-            </div>
-            <h3 className="font-mono font-bold text-base">Google Gemini Multimodal AI</h3>
-            <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-              Leveraging Google Gemini models for long-context semantic reasoning, automated progress report summarization, and high-density knowledge extraction.
-            </p>
-            <div className="text-[11px] font-mono text-[var(--accent)]">
-              Gemini AI Integration
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
@@ -1098,7 +1017,6 @@ export default function Home() {
       <Stats />
       <FounderSection />
       <Projects />
-      <DevFestHighlight />
       <Stack />
       <Education />
       <Contact />
