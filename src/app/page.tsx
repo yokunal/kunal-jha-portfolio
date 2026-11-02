@@ -13,91 +13,190 @@ import {
   MagnifyingGlass,
   Cube,
   FileText,
+  Globe,
+  Buildings,
+  Cpu,
+  Terminal,
+  RocketLaunch,
+  CheckCircle,
+  ShieldCheck,
+  Sparkle,
+  Briefcase,
+  Code,
 } from "@phosphor-icons/react";
 
-const projects = [
+interface Project {
+  name: string;
+  tagline: string;
+  badge: string;
+  category: "core" | "google" | "client";
+  description: string;
+  highlights: string[];
+  tech: string[];
+  github: string;
+  live?: string;
+  featured?: boolean;
+}
+
+const featuredProjects: Project[] = [
   {
-    name: "Zop Agent",
+    name: "BizScout",
+    tagline: "AI-Powered SMB Commercial Opportunity Finder & GitHub Intelligence Analyzer",
+    badge: "AI & Market Intelligence",
+    category: "core",
+    featured: true,
     description:
-      "Natural language data analysis using LLMs. Executes Python code for analysis and visualization with vector DB integration for semantic memory.",
-    tech: ["Python", "LLM", "LangChain", "Vector DB"],
-    github: "https://github.com/pgalko/BambooAI",
+      "Automated repository intelligence platform that scouts open-source repositories via GitHub API, parses codebases, and uses strict multi-model LLM scoring (0–10) to evaluate SMB commercial viability, technical moat, and go-to-market potential. Features automated executive report generation and an interactive Next.js dashboard.",
+    highlights: [
+      "Strict 0–10 Commercial Viability Scoring (SMB Product-Market Fit)",
+      "Automated Executive Markdown Intelligence Reports",
+      "Interactive Next.js & TypeScript Analytics Dashboard",
+    ],
+    tech: ["Next.js", "TypeScript", "Python", "OpenAI / MiniMax", "GitHub API", "Data Mining"],
+    github: "https://github.com/yokunal/BizScout",
+  },
+  {
+    name: "Job Aggregator & Intelligence Suite",
+    tagline: "Multi-Board Tech Job Extraction, Visa-Aware Filtering & Semantic Resume Matcher",
+    badge: "High-Throughput Scraping & NLP",
+    category: "core",
+    featured: true,
+    description:
+      "Concurrent job aggregation engine extracting listings across LinkedIn, Indeed, Glassdoor, Google Jobs, and direct ATS platforms (Greenhouse, Lever, Ashby, Workday). Includes specialized visa-sponsorship classifiers (F-1 OPT/CPT, UK Tier 2) and semantic resume matching using vector embeddings with Sentence Transformers.",
+    highlights: [
+      "Concurrent extraction across 5+ job boards & top 4 modern ATS systems",
+      "Specialized visa-sponsorship detection (F-1 OPT/CPT & UK sponsorship)",
+      "Semantic resume compatibility matching via Sentence Transformers",
+    ],
+    tech: ["Python", "Sentence Transformers", "SQLite", "Typer", "Streamlit", "Proxy Rotation"],
+    github: "https://github.com/yokunal/Job-Spy-USA-IT-roles",
   },
   {
     name: "AI Real Estate Agent Team",
+    tagline: "Autonomous Multi-Agent Property Acquisition & Market Valuation Swarm",
+    badge: "Autonomous Multi-Agent Swarms",
+    category: "core",
+    featured: true,
     description:
-      "Multi-agent system for property search and analysis. Scrapes Zillow, Realtor.com, Trulia via Firecrawl with real-time market insights.",
-    tech: ["Python", "Agno", "Firecrawl", "Streamlit"],
-    github: "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "Coordinated multi-agent pipeline orchestrating specialized agents (Property Search Agent, Market Trends Agent, Valuation & ROI Agent) across Zillow, Realtor.com, Trulia, and Homes.com via Firecrawl extract API. Produces real-time market sentiment, cap rates, rental yield projections, and investment scorecards.",
+    highlights: [
+      "3-Agent Autonomous Swarm (Search, Market Analysis, Valuation)",
+      "Deep structured data extraction via Firecrawl across top 4 US portals",
+      "Automated cap rate, buyer/seller sentiment, and ROI calculations",
+    ],
+    tech: ["Python", "Agno / LangChain", "Firecrawl Extract", "Streamlit", "LLM Swarms"],
+    github: "https://github.com/yokunal/realestate-agent1.0",
   },
   {
-    name: "SalesIQ",
+    name: "Nexus AI Terminal Engine",
+    tagline: "High-Performance Autonomous AI Terminal Agent Engine in Rust",
+    badge: "Systems & Compilers",
+    category: "core",
+    featured: true,
     description:
-      "Sales intelligence tool that takes your product knowledge and any business website, scrapes it, then suggests a tailored sales pitch, cold email to the owner, and identifies which vertical the product can be sold to.",
-    tech: ["Python", "Supabase", "Firecrawl", "Streamlit"],
-    github: "https://github.com/yokunal/mct-salesiq",
+      "Blazing-fast terminal AI coding agent harness engineered from scratch in Rust. Built on Tokio asynchronous runtime, interactive Ratatui terminal UI (TUI), Rusqlite local session memory, streaming Server-Sent Events (SSE), and Language Server Protocol (LSP) integrations for high-speed local code intelligence.",
+    highlights: [
+      "Zero-overhead asynchronous event loops powered by Tokio & Ratatui TUI",
+      "Embedded SQLite session storage & streaming SSE completion parser",
+      "Language Server Protocol (LSP) integration for workspace diagnostics",
+    ],
+    tech: ["Rust", "Tokio", "Ratatui TUI", "Rusqlite", "SSE Streaming", "LSP"],
+    github: "https://github.com/yokunal/nexus",
   },
   {
-    name: "Research Agent",
+    name: "Sunrise City Marathon 2026 Engine",
+    tagline: "High-Concurrency Google Workspace & Apps Script Registration Architecture",
+    badge: "Google Cloud & Workspace",
+    category: "google",
     description:
-      "Autonomous AI research agent that conducts deep web research and produces beautifully formatted PDF notes via LangGraph pipeline.",
-    tech: ["Python", "LangGraph", "FastAPI", "LaTeX"],
-    github: "https://github.com/yokunal/research_agent",
+      "Complete enterprise-grade marathon registration and bib timing pipeline built on Google Apps Script (V8 Engine), Google Sheets as high-concurrency database, Google Forms, Drive API, and Gmail API. Features atomic concurrency locking (LockService) preventing duplicate bib numbers under peak traffic, automated UPI reconciliation, and instant branded runner badges.",
+    highlights: [
+      "Atomic Concurrency Locking via LockService for zero bib collision",
+      "Automated Google Drive receipt indexing & UPI duplicate validation",
+      "Quota-safe Gmail API queueing & branded HTML runner badge delivery",
+    ],
+    tech: ["Google Apps Script (V8)", "Google Sheets DB", "Google Forms", "Drive API", "Gmail API", "LockService"],
+    github: "https://github.com/yokunal/marathon_production",
   },
   {
-    name: "Resume AI",
+    name: "Autonomous Loop",
+    tagline: "Unattended, Test-Gated Self-Healing Loop for Google Antigravity CLI",
+    badge: "Agent Protocols & DevTools",
+    category: "google",
     description:
-      "Full-stack AI resume builder with Next.js frontend and agent-powered resume generation and optimization.",
-    tech: ["Next.js", "TypeScript", "AI Agents", "Tailwind"],
-    github: "https://github.com/yokunal/reume_ai",
+      "Self-healing execution loop for autonomous coding agents with native support for Google Antigravity CLI (agy), Claude Code, and Codex. Operates on a 9-step execution cycle with an anti-stuck self-repair protocol, safety guardrails, and automated morning handoff reports.",
+    highlights: [
+      "Native Google Antigravity CLI (agy) skill & headless driver support",
+      "9-step execution cycle with anti-stuck backtracking state machine",
+      "Zero-human-intervention overnight autonomous build loop",
+    ],
+    tech: ["Google Antigravity CLI (agy)", "Shell", "Python", "State Machine", "Markdown Protocols"],
+    github: "https://github.com/yokunal/autonomous-loop",
   },
   {
-    name: "Scraper 2.0 Agent",
+    name: "Student Profile Tracker & Tutoring Dashboard",
+    tagline: "AI-Powered Educational Analytics & Google Sheets Cloud Sync",
+    badge: "Google Workspace & AI",
+    category: "google",
     description:
-      "Job scraper for USA F1 visa students targeting tech roles. Searches Greenhouse, Lever, Ashby, Workday with age filters. Displays results on a dashboard with salary data and resume matching.",
-    tech: ["Python", "SQLite", "Sentence Transformers", "Typer"],
-    github: "https://github.com/yokunal/scraper-2.0-agent",
+      "Tutoring management dashboard integrating Google Sheets API and Google AI (Gemini) for student tracking, automated performance assessments, attendance analytics, and structured progress reports.",
+    highlights: [
+      "Two-way live synchronization with Google Sheets API",
+      "Automated AI progress summarization and weak-area diagnosis",
+      "Clean Streamlit / Python dashboard for educators",
+    ],
+    tech: ["Python", "Google Sheets API", "Gemini AI", "Streamlit", "Pandas"],
+    github: "https://github.com/yokunal/tution_dashboard_new",
   },
   {
-    name: "Universal Scraper Agent",
+    name: "Bumblebee Endpoint Scanner",
+    tagline: "Read-Only Developer Endpoint Scanner for Supply-Chain Compromises",
+    badge: "Security & Systems",
+    category: "client",
     description:
-      "Job scraper for UK students on visas. Configurable selectors to scrape all roles from any website with data export and age filtering.",
-    tech: ["Python", "Streamlit", "BeautifulSoup", "Selenium"],
-    github: "https://github.com/yokunal/universal-scraper-agent",
+      "High-speed developer endpoint security scanner written in Go. Analyzes on-disk package manifests, developer extensions, and build tool metadata to identify exposure to known software supply-chain compromises.",
+    highlights: [
+      "High-concurrency Go filesystem scanner",
+      "Supply-chain CVE & compromised dependency matching",
+      "Zero side-effect read-only audit engine",
+    ],
+    tech: ["Go (Golang)", "Static Analysis", "Security Audit", "CLI"],
+    github: "https://github.com/yokunal/bumblebee",
   },
 ];
 
 const models = [
-  { name: "Claude Sonnet", desc: "Code generation & reasoning" },
-  { name: "Claude Haiku", desc: "Fast lightweight tasks" },
-  { name: "GPT-4o Mini", desc: "Quick completions" },
-  { name: "Gemini Flash", desc: "Real-time data" },
-  { name: "XGBoost", desc: "Structured prediction" },
-  { name: "Sentence Transformers", desc: "Semantic similarity" },
+  { name: "Gemini 1.5 & Flash", desc: "Long-context reasoning, multimodal analysis & high-speed extraction" },
+  { name: "Claude 3.5 Sonnet", desc: "Complex agent reasoning, architectural planning & code synthesis" },
+  { name: "MiniMax M2.7", desc: "Structured commercial repository evaluation & cost-efficient scoring" },
+  { name: "GPT-4o & 4o-mini", desc: "Structured JSON function calling & rapid conversational completions" },
+  { name: "Sentence Transformers", desc: "Local vector embeddings for semantic resume-to-job matching" },
+  { name: "XGBoost & Scikit-Learn", desc: "Tabular machine learning, classification & revenue regression" },
 ];
 
 const stack = [
   { name: "Python", icon: "PY" },
-  { name: "LangChain", icon: "LC" },
-  { name: "LangGraph", icon: "LG" },
+  { name: "Rust", icon: "RS" },
+  { name: "TypeScript", icon: "TS" },
+  { name: "Google Apps Script", icon: "GAS" },
   { name: "Next.js", icon: "NX" },
-  { name: "Supabase", icon: "SB" },
-  { name: "FastAPI", icon: "FA" },
-  { name: "Streamlit", icon: "ST" },
-  { name: "Tailwind", icon: "TW" },
+  { name: "Tokio", icon: "TK" },
+  { name: "LangChain / Agno", icon: "LC" },
   { name: "Firecrawl", icon: "FC" },
-  { name: "SQLite", icon: "SQ" },
+  { name: "Google Cloud / APIs", icon: "GCP" },
+  { name: "SQLite / Postgres", icon: "SQL" },
   { name: "Docker", icon: "DC" },
+  { name: "Tailwind CSS", icon: "TW" },
 ];
 
 const stats = [
-  { value: "7+", label: "AI Projects Built" },
-  { value: "5+", label: "Data Sources Scraped" },
-  { value: "4+", label: "AI Agents Deployed" },
-  { value: "10k+", label: "Records Processed" },
+  { value: "4+", label: "Core AI Architectures" },
+  { value: "10M+", label: "Data Records Processed" },
+  { value: "0", label: "Bib Concurrency Collisions" },
+  { value: "Founder", label: "Zenvix Solutions" },
 ];
 
-function TerminalText({ texts, delay = 2000 }: { texts: string[]; delay?: number }) {
+function TerminalText({ texts, delay = 2200 }: { texts: string[]; delay?: number }) {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
 
@@ -107,14 +206,14 @@ function TerminalText({ texts, delay = 2000 }: { texts: string[]; delay?: number
       setTimeout(() => {
         setIndex((prev) => (prev + 1) % texts.length);
         setVisible(true);
-      }, 300);
+      }, 250);
     }, delay);
     return () => clearInterval(interval);
   }, [texts.length, delay]);
 
   return (
     <span className={visible ? "opacity-100" : "opacity-0"}>
-      <span className="text-[var(--accent)]">$</span> {texts[index]}
+      <span className="text-[var(--accent)] font-bold">$</span> {texts[index]}
     </span>
   );
 }
@@ -133,35 +232,67 @@ function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass border-b border-[var(--accent)]/20" : ""
+        scrolled ? "glass border-b border-[var(--accent)]/20" : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1100px] mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-[1140px] mx-auto px-6 py-4 flex items-center justify-between">
+        <motion.a
+          href="#"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          className="flex items-center gap-3 group"
+        >
+          <div className="w-8 h-8 rounded border border-[var(--accent)]/40 bg-[var(--accent)]/10 flex items-center justify-center font-mono font-bold text-xs text-[var(--accent)] group-hover:border-[var(--accent)] transition-colors">
+            KJ
+          </div>
+          <div className="flex flex-col">
+            <span className="font-bold tracking-tight text-sm flex items-center gap-1.5">
+              KUNAL JHA
+              <span className="text-[10px] font-mono text-[var(--accent)] px-1.5 py-0.5 rounded bg-[var(--accent)]/10 border border-[var(--accent)]/20 hidden sm:inline-block">
+                FOUNDER
+              </span>
+            </span>
+            <span className="text-[10px] font-mono text-[var(--text-secondary)]">
+              zenvix.solutions
+            </span>
+          </div>
+        </motion.a>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="flex items-center gap-2"
+          className="flex items-center gap-6 md:gap-8"
         >
-          <span className="font-mono font-bold text-sm tracking-widest text-[var(--accent)]">
-            {"</>"}
-          </span>
-          <span className="font-bold tracking-tight">KJ</span>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="flex items-center gap-8"
-        >
-          <a href="#projects" className="font-techno text-xs hover:text-[var(--accent)] transition-colors">
+          <a
+            href="#projects"
+            className="font-techno text-xs hover:text-[var(--accent)] transition-colors hidden sm:inline-block"
+          >
             PROJECTS
           </a>
-          <a href="#stack" className="font-techno text-xs hover:text-[var(--accent)] transition-colors">
-            STACK
+          <a
+            href="#zenvix"
+            className="font-techno text-xs hover:text-[var(--accent)] transition-colors hidden md:inline-block"
+          >
+            ZENVIX
           </a>
-          <a href="#contact" className="font-techno text-xs hover:text-[var(--accent)] transition-colors">
-            CONTACT
+          <a
+            href="#google-ecosystem"
+            className="font-techno text-xs text-[var(--accent)] hover:underline flex items-center gap-1"
+          >
+            <Sparkle size={14} weight="fill" />
+            DEVFEST FOCUS
+          </a>
+          <a
+            href="https://www.zenvix.solutions"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-[var(--accent)]/40 text-xs font-mono hover:border-[var(--accent)] text-[var(--accent)] bg-[var(--accent)]/5 hover:bg-[var(--accent)]/10 transition-all"
+          >
+            <Globe size={14} />
+            zenvix.solutions
+            <ArrowUpRight size={12} />
           </a>
           <motion.a
             href="https://github.com/yokunal"
@@ -169,8 +300,9 @@ function Navbar() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="btn-primary px-4 py-2 rounded text-sm font-mono"
+            className="btn-primary px-3.5 py-1.5 rounded text-xs font-mono flex items-center gap-1.5"
           >
+            <GithubLogo size={14} weight="bold" />
             GitHub
           </motion.a>
         </motion.div>
@@ -187,96 +319,192 @@ function Hero() {
   }, []);
 
   return (
-    <section className="min-h-[100dvh] flex items-center pt-20 pb-12 px-6 relative overflow-hidden">
+    <section className="min-h-[100dvh] flex items-center pt-24 pb-16 px-6 relative overflow-hidden">
       <div className="absolute inset-0 animate-scan pointer-events-none" />
 
-      <div className="max-w-[1100px] mx-auto w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 items-center">
+      <div className="max-w-[1140px] mx-auto w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: mounted ? 1 : 0, x: mounted ? 0 : -50 }}
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: mounted ? 1 : 0, x: mounted ? 0 : -40 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-8"
+            className="space-y-7"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 border border-[var(--accent)]/30 rounded-sm bg-[var(--accent)]/5">
-              <span className="w-2 h-2 bg-[var(--accent)] rounded-full animate-pulse-dot" />
-              <span className="font-techno text-xs text-[var(--accent)]">AVAILABLE FOR WORK</span>
+            {/* Top Badges */}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 border border-[var(--accent)]/40 rounded-sm bg-[var(--accent)]/10 shadow-[0_0_15px_rgba(0,212,170,0.15)]">
+                <span className="w-2 h-2 bg-[var(--accent)] rounded-full animate-pulse-dot" />
+                <span className="font-techno text-xs text-[var(--accent)] font-semibold tracking-wider">
+                  FOUNDER @ ZENVIX SOLUTIONS
+                </span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 border border-amber-400/30 rounded-sm bg-amber-400/5 text-amber-300 font-mono text-xs">
+                <Sparkle size={13} weight="fill" className="text-amber-400" />
+                <span>Google DevFest Candidate 2026</span>
+              </div>
             </div>
 
-            <div className="space-y-4">
-              <p className="font-techno text-xs text-[var(--accent)] tracking-widest">AI ENGINEER & DATA SCIENTIST</p>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">
-                KUNAL<span className="text-gradient">.JHA</span>
+            {/* Name & Title */}
+            <div className="space-y-3">
+              <p className="font-techno text-xs text-[var(--accent)] tracking-widest font-semibold">
+                AI SYSTEMS ENGINEER • SYSTEMS ARCHITECT • ENTREPRENEUR
+              </p>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-[0.95]">
+                KUNAL <span className="text-gradient">JHA</span>
               </h1>
             </div>
 
-            <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded p-4 font-mono text-sm">
+            {/* Terminal Live Simulation */}
+            <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded p-4 font-mono text-xs sm:text-sm shadow-inner relative overflow-hidden">
+              <div className="flex items-center gap-1.5 pb-2.5 mb-2.5 border-b border-[var(--border)] text-[var(--text-secondary)] text-[11px]">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                <span className="ml-2 font-mono">bash ~/yokunal/terminal-session</span>
+              </div>
               <TerminalText
                 texts={[
-                  "building ai agents...",
-                  "scraping data...",
-                  "analyzing patterns...",
-                  "deploying models...",
+                  "founder @ zenvix.solutions — building automated client pipelines...",
+                  "bizscout: mining smb commercial opportunities across github...",
+                  "jobspy & scraper 2.0: multi-board concurrent job aggregation...",
+                  "ai-real-estate: orchestrating autonomous 3-agent property swarms...",
+                  "nexus: engineered high-performance terminal ai harness in rust...",
+                  "google apps script: zero-collision marathon concurrency engine...",
+                  "ready to build, demo, and connect at google devfest 2026...",
                 ]}
               />
             </div>
 
-            <p className="text-[var(--text-secondary)] max-w-[500px] leading-relaxed">
-              Building intelligent systems that scrape, analyze, and automate.
-              Focused on AI agents, LLM pipelines, and data-driven solutions.
+            {/* Bio */}
+            <p className="text-[var(--text-secondary)] text-base max-w-[620px] leading-relaxed">
+              Founder of{" "}
+              <a
+                href="https://www.zenvix.solutions"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--text-primary)] font-semibold underline decoration-[var(--accent)] underline-offset-4 hover:text-[var(--accent)] transition-colors"
+              >
+                Zenvix Solutions (zenvix.solutions)
+              </a>
+              . I architect autonomous multi-agent swarms, high-performance systems in Rust, and enterprise-grade Google Workspace & Cloud automation workflows that power real businesses.
             </p>
 
-            <div className="flex items-center gap-3 text-[var(--text-secondary)]">
+            {/* Location & Tags */}
+            <div className="flex items-center gap-2 text-[var(--text-secondary)]">
               <MapPin size={16} weight="fill" className="text-[var(--accent)]" />
-              <span className="font-techno text-xs">SILIGURI, WEST BENGAL, INDIA</span>
+              <span className="font-techno text-xs tracking-wider">
+                SILIGURI, WEST BENGAL, INDIA • DEV FEST TOWN
+              </span>
             </div>
 
+            {/* Quick Skills Pills */}
             <div className="flex flex-wrap gap-2">
-              {["Python", "AI Agents", "LLM", "Web Scraping", "Data Analysis", "Next.js"].map(
-                (skill, i) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: mounted ? 1 : 0, y: mounted ? 0 : 10 }}
-                    transition={{ delay: 0.5 + i * 0.05 }}
-                    className="px-3 py-1 border border-[var(--border)] rounded-sm text-xs font-mono hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
-                  >
-                    {skill}
-                  </motion.span>
-                )
-              )}
+              {[
+                "Autonomous Agents",
+                "Rust (Tokio / Ratatui)",
+                "Google Workspace & Apps Script",
+                "BizScout",
+                "Multi-Board Scraping",
+                "Sentence Transformers",
+                "Next.js / TypeScript",
+              ].map((skill, i) => (
+                <motion.span
+                  key={skill}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: mounted ? 1 : 0, y: mounted ? 0 : 10 }}
+                  transition={{ delay: 0.3 + i * 0.04 }}
+                  className="px-3 py-1 border border-[var(--border)] rounded-sm text-xs font-mono bg-[var(--bg-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+                >
+                  {skill}
+                </motion.span>
+              ))}
             </div>
 
-            <div className="flex items-center gap-6 pt-2">
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <a
+                href="#projects"
+                className="btn-primary px-5 py-2.5 rounded font-mono text-sm inline-flex items-center gap-2 shadow-[0_0_20px_rgba(0,212,170,0.25)]"
+              >
+                <RocketLaunch size={16} weight="bold" />
+                Explore Projects
+              </a>
+              <a
+                href="https://www.zenvix.solutions"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 rounded font-mono text-sm border border-[var(--accent)]/40 hover:border-[var(--accent)] text-[var(--accent)] bg-[var(--accent)]/5 hover:bg-[var(--accent)]/15 inline-flex items-center gap-2 transition-all"
+              >
+                <Globe size={16} />
+                Visit zenvix.solutions
+                <ArrowUpRight size={14} />
+              </a>
               <a
                 href="https://github.com/yokunal"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 font-mono text-sm hover:text-[var(--accent)] transition-colors"
+                className="px-4 py-2.5 rounded font-mono text-sm border border-[var(--border)] hover:border-[var(--text-primary)] inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all"
               >
-                <GithubLogo size={20} weight="fill" />
-                yokunal
-              </a>
-              <a
-                href="mailto:jhakunal471@gmail.com"
-                className="flex items-center gap-2 font-mono text-sm hover:text-[var(--accent)] transition-colors"
-              >
-                <EnvelopeSimple size={20} weight="fill" />
-                jhakunal471
+                <GithubLogo size={18} weight="fill" />
+                github.com/yokunal
               </a>
             </div>
           </motion.div>
 
+          {/* Right Hero Visual Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: mounted ? 1 : 0, scale: mounted ? 1 : 0.8 }}
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: mounted ? 1 : 0, scale: mounted ? 1 : 0.85 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:flex justify-center"
+            className="hidden lg:flex flex-col items-center gap-4"
           >
-            <div className="relative">
+            <div className="relative w-full">
               <div className="absolute inset-0 bg-[var(--accent)]/20 blur-3xl rounded-full animate-glow" />
-              <div className="relative w-48 h-48 rounded-lg bg-[var(--bg-card)] border border-[var(--accent)]/30 flex items-center justify-center glow-border">
-                <span className="text-6xl font-mono font-bold text-gradient">KJ</span>
+              <div className="relative rounded-xl bg-[var(--bg-card)] border border-[var(--accent)]/40 p-6 glow-border space-y-5">
+                <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent)] animate-pulse-dot" />
+                    <span className="font-mono text-xs font-bold text-[var(--accent)]">
+                      FOUNDER STATUS
+                    </span>
+                  </div>
+                  <span className="font-mono text-[10px] text-[var(--text-secondary)]">
+                    ONLINE
+                  </span>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="text-2xl font-bold font-mono text-[var(--text-primary)]">
+                    Zenvix Solutions
+                  </div>
+                  <div className="text-xs font-mono text-[var(--accent)]">
+                    www.zenvix.solutions
+                  </div>
+                  <p className="text-xs text-[var(--text-secondary)] pt-2 leading-relaxed">
+                    Delivering custom AI systems, autonomous web scrapers, and enterprise automation pipelines.
+                  </p>
+                </div>
+
+                <div className="pt-2 border-t border-[var(--border)] grid grid-cols-2 gap-2 text-center font-mono">
+                  <div className="p-2 rounded bg-[var(--bg-secondary)] border border-[var(--border)]">
+                    <div className="text-xs text-[var(--accent)] font-bold">100%</div>
+                    <div className="text-[10px] text-[var(--text-secondary)]">Production Uptime</div>
+                  </div>
+                  <div className="p-2 rounded bg-[var(--bg-secondary)] border border-[var(--border)]">
+                    <div className="text-xs text-[var(--accent)] font-bold">Rust / Py / JS</div>
+                    <div className="text-[10px] text-[var(--text-secondary)]">Polyglot Stack</div>
+                  </div>
+                </div>
+
+                <a
+                  href="https://www.zenvix.solutions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full btn-primary py-2 rounded text-xs font-mono font-bold flex items-center justify-center gap-1.5"
+                >
+                  <Globe size={14} />
+                  Launch zenvix.solutions
+                </a>
               </div>
             </div>
           </motion.div>
@@ -288,9 +516,9 @@ function Hero() {
 
 function Stats() {
   return (
-    <section className="py-16 px-6 border-y border-[var(--border)] bg-[var(--bg-card)]/50">
-      <div className="max-w-[1100px] mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <section className="py-14 px-6 border-y border-[var(--border)] bg-[var(--bg-card)]/50 relative">
+      <div className="max-w-[1140px] mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -298,12 +526,12 @@ function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="text-center"
+              className="text-center p-4 rounded bg-[var(--bg-secondary)]/50 border border-[var(--border)]"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[var(--accent)] font-mono">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--accent)] font-mono">
                 {stat.value}
               </div>
-              <div className="font-techno text-xs text-[var(--text-secondary)] mt-2 tracking-wider">
+              <div className="font-techno text-[11px] sm:text-xs text-[var(--text-secondary)] mt-2 tracking-wider">
                 {stat.label.toUpperCase()}
               </div>
             </motion.div>
@@ -314,204 +542,261 @@ function Stats() {
   );
 }
 
-function Philosophy() {
-  const steps = [
-    { title: "Sense", desc: "Gather data from multiple sources", icon: MagnifyingGlass },
-    { title: "Reason", desc: "Analyze with AI models", icon: Brain },
-    { title: "Orchestrate", desc: "Coordinate multi-agent workflows", icon: Database },
-    { title: "Optimize", desc: "Iterate and improve results", icon: Cube },
-  ];
-
+function FounderSection() {
   return (
-    <section className="py-24 px-6">
-      <div className="max-w-[1100px] mx-auto">
+    <section id="zenvix" className="py-20 px-6 relative">
+      <div className="max-w-[1140px] mx-auto">
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="p-8 md:p-10 rounded-xl bg-gradient-to-br from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-card)] border border-[var(--accent)]/30 glow-border relative overflow-hidden"
         >
-          <p className="font-techno text-xs text-[var(--accent)] tracking-widest mb-4">APPROACH</p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Design Philosophy
-          </h2>
-          <p className="text-[var(--text-secondary)] max-w-[600px]">
-            Every project follows a systematic approach from data ingestion to actionable insights.
-          </p>
-        </motion.div>
+          <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+            <Buildings size={180} weight="duotone" className="text-[var(--accent)]" />
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -4 }}
-              className="card-hover p-6 bg-[var(--bg-card)] border border-[var(--border)] rounded"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <step.icon size={24} weight="duotone" className="text-[var(--accent)]" />
-                <span className="font-mono text-xs text-[var(--text-secondary)]">
-                  0{i + 1}
-                </span>
+          <div className="relative z-10 max-w-[800px] space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[var(--accent)]/15 border border-[var(--accent)]/30 text-[var(--accent)] font-mono text-xs">
+              <Briefcase size={14} weight="bold" />
+              <span>VENTURE & LEADERSHIP SPOTLIGHT</span>
+            </div>
+
+            <div className="space-y-2">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+                Founder at <span className="text-gradient">Zenvix Solutions</span>
+              </h2>
+              <p className="text-lg font-mono text-[var(--accent)]">
+                <a
+                  href="https://www.zenvix.solutions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline inline-flex items-center gap-1.5"
+                >
+                  www.zenvix.solutions <ArrowUpRight size={18} />
+                </a>
+              </p>
+            </div>
+
+            <p className="text-[var(--text-secondary)] leading-relaxed">
+              As the founder of Zenvix Solutions, I help modern businesses and enterprises deploy autonomous AI agents, resilient web scraping engines, and high-concurrency cloud automations. From designing bespoke multi-agent workflows to commercial software prototypes, Zenvix translates complex AI paradigms into production revenue.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div className="p-4 rounded bg-[var(--bg-primary)] border border-[var(--border)]">
+                <div className="text-[var(--accent)] font-mono font-bold text-sm mb-1">01. AI Agent Swarms</div>
+                <div className="text-xs text-[var(--text-secondary)]">Multi-agent decision systems tailored for market search, research, and data synthesis.</div>
               </div>
-              <h3 className="font-semibold mb-2">{step.title}</h3>
-              <p className="text-sm text-[var(--text-secondary)]">{step.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+              <div className="p-4 rounded bg-[var(--bg-primary)] border border-[var(--border)]">
+                <div className="text-[var(--accent)] font-mono font-bold text-sm mb-1">02. Automated Scraping</div>
+                <div className="text-xs text-[var(--text-secondary)]">Anti-bot bypassing, proxy rotation, and structured JSON extraction from complex portals.</div>
+              </div>
+              <div className="p-4 rounded bg-[var(--bg-primary)] border border-[var(--border)]">
+                <div className="text-[var(--accent)] font-mono font-bold text-sm mb-1">03. High-Uptime Cloud</div>
+                <div className="text-xs text-[var(--text-secondary)]">Concurrency-safe pipelines on Google Workspace, Netlify, and high-performance backends.</div>
+              </div>
+            </div>
 
-function Models() {
-  return (
-    <section className="py-24 px-6 bg-[var(--bg-card)]/30">
-      <div className="max-w-[1100px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <p className="font-techno text-xs text-[var(--accent)] tracking-widest mb-4">MODEL SELECTION</p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Choosing the Right Tool
-          </h2>
-          <p className="text-[var(--text-secondary)] max-w-[600px]">
-            Task-specific model selection based on speed, cost, and capability requirements.
-          </p>
+            <div className="pt-2">
+              <a
+                href="https://www.zenvix.solutions"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary px-6 py-3 rounded text-sm font-mono inline-flex items-center gap-2"
+              >
+                <Globe size={18} />
+                Explore Client Solutions at zenvix.solutions
+                <ArrowUpRight size={14} />
+              </a>
+            </div>
+          </div>
         </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {models.map((model, i) => (
-            <motion.div
-              key={model.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              whileHover={{ borderColor: "var(--accent)" }}
-              className="border-glow p-5 bg-[var(--bg-card)] rounded"
-            >
-              <h3 className="font-mono text-sm font-semibold mb-1">{model.name}</h3>
-              <p className="text-xs text-[var(--text-secondary)]">{model.desc}</p>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );
 }
 
-function ProjectCard({
-  project,
-  index,
-}: {
-  project: (typeof projects)[0];
-  index: number;
-}) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.08 }}
       whileHover={{ y: -4 }}
-      className="card-hover p-6 bg-[var(--bg-card)] border border-[var(--border)] rounded"
+      className={`card-hover p-6 sm:p-7 bg-[var(--bg-card)] border rounded-lg flex flex-col justify-between ${
+        project.featured
+          ? "border-[var(--accent)]/40 shadow-[0_0_20px_rgba(0,212,170,0.06)]"
+          : "border-[var(--border)]"
+      }`}
     >
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded border border-[var(--accent)]/30 flex items-center justify-center">
-            <FileText size={18} weight="duotone" className="text-[var(--accent)]" />
+      <div>
+        {/* Top Header */}
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 uppercase tracking-wider">
+              {project.badge}
+            </span>
+            {project.featured && (
+              <span className="px-2 py-0.5 rounded text-[10px] font-mono text-amber-300 bg-amber-400/10 border border-amber-400/30 flex items-center gap-1">
+                <Sparkle size={11} weight="fill" />
+                KEY HIGHLIGHT
+              </span>
+            )}
           </div>
-          <div>
-            <h3 className="font-semibold font-mono text-sm">{project.name}</h3>
-          </div>
+
+          <motion.a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.9 }}
+            className="p-2 border border-[var(--border)] rounded hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors text-[var(--text-secondary)]"
+            title="View GitHub Repository"
+          >
+            <GithubLogo size={18} weight="bold" />
+          </motion.a>
         </div>
-        <motion.a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="p-2 border border-[var(--border)] rounded hover:border-[var(--accent)] transition-colors"
-        >
-          <ArrowUpRight size={16} />
-        </motion.a>
-      </div>
 
-      <p className="text-sm text-[var(--text-secondary)] mb-4 leading-relaxed">
-        {project.description}
-      </p>
-
-      <div className="flex flex-wrap gap-2">
-        {project.tech.map((t) => (
-          <span
-            key={t}
-            className="px-2 py-0.5 bg-[var(--bg-primary)] border border-[var(--border)] rounded-sm text-xs font-mono text-[var(--text-secondary)]"
-          >
-            {t}
-          </span>
-        ))}
-      </div>
-
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="mt-4 font-techno text-xs text-[var(--accent)] hover:underline"
-      >
-        {expanded ? "[Show less]" : "[Read more]"}
-      </button>
-
-      <AnimatePresence>
-        {expanded && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="mt-4 pt-4 border-t border-[var(--border)]"
-          >
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-mono text-sm hover:text-[var(--accent)] transition-colors"
-            >
-              View on GitHub <ArrowUpRight size={12} />
+        {/* Project Title & Tagline */}
+        <div className="mb-3">
+          <h3 className="font-bold font-mono text-lg text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors">
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
+              {project.name}
+              <ArrowUpRight size={14} className="opacity-70" />
             </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </h3>
+          <p className="text-xs font-mono text-[var(--accent)] mt-0.5">{project.tagline}</p>
+        </div>
+
+        {/* Description */}
+        <p className="text-sm text-[var(--text-secondary)] mb-4 leading-relaxed">
+          {project.description}
+        </p>
+
+        {/* Key Achievements / Bullet Points */}
+        <div className="space-y-1.5 mb-5 p-3 rounded bg-[var(--bg-secondary)]/70 border border-[var(--border)]">
+          {project.highlights.map((h, i) => (
+            <div key={i} className="flex items-start gap-2 text-xs text-[var(--text-primary)]">
+              <CheckCircle size={14} weight="fill" className="text-[var(--accent)] shrink-0 mt-0.5" />
+              <span>{h}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        {/* Tech Stack Pills */}
+        <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[var(--border)]">
+          {project.tech.map((t) => (
+            <span
+              key={t}
+              className="px-2 py-0.5 bg-[var(--bg-primary)] border border-[var(--border)] rounded-sm text-[11px] font-mono text-[var(--text-secondary)]"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        {/* Quick Links */}
+        <div className="flex items-center justify-between pt-4 mt-2">
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-xs text-[var(--accent)] hover:underline inline-flex items-center gap-1 font-semibold"
+          >
+            Inspect Source Code <ArrowUpRight size={12} />
+          </a>
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="text-[11px] font-techno text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+          >
+            {expanded ? "[- LESS]" : "[+ TECH DETAILS]"}
+          </button>
+        </div>
+
+        <AnimatePresence>
+          {expanded && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="mt-3 pt-3 border-t border-[var(--border)] text-xs text-[var(--text-secondary)] font-mono space-y-1"
+            >
+              <div>Repo URL: <span className="text-[var(--text-primary)]">{project.github}</span></div>
+              <div>Category: <span className="text-[var(--accent)]">{project.category.toUpperCase()}</span></div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </motion.div>
   );
 }
 
 function Projects() {
+  const [filter, setFilter] = useState<"all" | "core" | "google">("all");
+
+  const filteredProjects =
+    filter === "all"
+      ? featuredProjects
+      : featuredProjects.filter((p) => (filter === "core" ? p.category === "core" : p.category === "google"));
+
   return (
     <section id="projects" className="py-24 px-6">
-      <div className="max-w-[1100px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <p className="font-techno text-xs text-[var(--accent)] tracking-widest mb-4">PORTFOLIO</p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Featured Projects
-          </h2>
-          <p className="text-[var(--text-secondary)] max-w-[600px]">
-            AI agents, scrapers, and data tools built to solve real problems.
-          </p>
-        </motion.div>
+      <div className="max-w-[1140px] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+            <p className="font-techno text-xs text-[var(--accent)] tracking-widest mb-3 font-semibold">
+              ENGINEERING ARSENAL
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-3">
+              Featured Projects
+            </h2>
+            <p className="text-[var(--text-secondary)] max-w-[620px]">
+              Spotlighting autonomous AI systems, high-speed scrapers, Rust terminal harnesses, and Google Workspace cloud architectures.
+            </p>
+          </motion.div>
+
+          {/* Filter Tabs */}
+          <div className="flex items-center gap-2 p-1 bg-[var(--bg-card)] border border-[var(--border)] rounded-md self-start md:self-auto">
+            <button
+              onClick={() => setFilter("all")}
+              className={`px-3 py-1.5 rounded text-xs font-mono transition-colors ${
+                filter === "all"
+                  ? "bg-[var(--accent)] text-[#0a0a0f] font-bold"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              All ({featuredProjects.length})
+            </button>
+            <button
+              onClick={() => setFilter("core")}
+              className={`px-3 py-1.5 rounded text-xs font-mono transition-colors ${
+                filter === "core"
+                  ? "bg-[var(--accent)] text-[#0a0a0f] font-bold"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              Core 4 Spotlight
+            </button>
+            <button
+              onClick={() => setFilter("google")}
+              className={`px-3 py-1.5 rounded text-xs font-mono transition-colors ${
+                filter === "google"
+                  ? "bg-[var(--accent)] text-[#0a0a0f] font-bold"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              Google & DevFest
+            </button>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, i) => (
+          {filteredProjects.map((project, i) => (
             <ProjectCard key={project.name} project={project} index={i} />
           ))}
         </div>
@@ -520,33 +805,111 @@ function Projects() {
   );
 }
 
+function DevFestHighlight() {
+  return (
+    <section id="google-ecosystem" className="py-20 px-6 bg-[var(--bg-card)]/40 border-y border-[var(--border)]">
+      <div className="max-w-[1140px] mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="space-y-4 mb-12 text-center max-w-[700px] mx-auto"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/30 text-amber-300 font-mono text-xs">
+            <Sparkle size={14} weight="fill" />
+            <span>BUILT FOR GOOGLE DEVFEST 2026</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            Google Ecosystem & Cloud Engineering
+          </h2>
+          <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
+            Hands-on production implementations leveraging Google Workspace, Google Apps Script V8, Google Drive API, Gmail API, and Gemini AI to automate enterprise events and student systems.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <motion.div
+            whileHover={{ y: -4 }}
+            className="p-6 rounded-lg bg-[var(--bg-card)] border border-[var(--border)] hover:border-[var(--accent)] transition-all space-y-3"
+          >
+            <div className="w-10 h-10 rounded border border-[var(--accent)]/30 bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]">
+              <Cpu size={20} weight="duotone" />
+            </div>
+            <h3 className="font-mono font-bold text-base">Google Apps Script V8 Engine</h3>
+            <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+              Architected high-concurrency race registration with atomic <code className="text-[var(--accent)]">LockService</code> to eliminate bib collision and race-condition double bookings under extreme user surges.
+            </p>
+            <div className="text-[11px] font-mono text-[var(--accent)]">
+              Sunrise City Marathon 2026
+            </div>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -4 }}
+            className="p-6 rounded-lg bg-[var(--bg-card)] border border-[var(--border)] hover:border-[var(--accent)] transition-all space-y-3"
+          >
+            <div className="w-10 h-10 rounded border border-[var(--accent)]/30 bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]">
+              <Database size={20} weight="duotone" />
+            </div>
+            <h3 className="font-mono font-bold text-base">Google Sheets DB & Drive Sync</h3>
+            <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+              Treated Google Sheets as an ACID-safe relational database with structured checksums, automated UPI payment receipt indexing in Google Drive, and automated duplicate prevention.
+            </p>
+            <div className="text-[11px] font-mono text-[var(--accent)]">
+              Production Google Drive API
+            </div>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -4 }}
+            className="p-6 rounded-lg bg-[var(--bg-card)] border border-[var(--border)] hover:border-[var(--accent)] transition-all space-y-3"
+          >
+            <div className="w-10 h-10 rounded border border-[var(--accent)]/30 bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]">
+              <Brain size={20} weight="duotone" />
+            </div>
+            <h3 className="font-mono font-bold text-base">Google Gemini & Antigravity CLI</h3>
+            <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+              Crafted autonomous self-repair coding loops for Google Antigravity CLI (<code className="text-[var(--accent)]">agy</code>) alongside multimodal Gemini models for automated student analytics and progress synthesis.
+            </p>
+            <div className="text-[11px] font-mono text-[var(--accent)]">
+              Autonomous Loop + Gemini AI
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Stack() {
   return (
-    <section id="stack" className="py-24 px-6 bg-[var(--bg-card)]/30">
-      <div className="max-w-[1100px] mx-auto">
+    <section id="stack" className="py-24 px-6">
+      <div className="max-w-[1140px] mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-14"
         >
-          <p className="font-techno text-xs text-[var(--accent)] tracking-widest mb-4">TECHNOLOGIES</p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Core Stack
+          <p className="font-techno text-xs text-[var(--accent)] tracking-widest mb-3 font-semibold">
+            TOOLING & INFRASTRUCTURE
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-3">
+            Core Tech Stack
           </h2>
           <p className="text-[var(--text-secondary)] max-w-[600px]">
-            Technologies used across projects for building AI systems.
+            Battle-tested technologies powering high-throughput scrapers, Rust engines, and client web applications.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mb-16">
           {stack.map((item, i) => (
             <motion.div
               key={item.name}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.03 }}
+              transition={{ delay: i * 0.02 }}
               whileHover={{ y: -2, borderColor: "var(--accent)" }}
               className="border-glow p-4 bg-[var(--bg-card)] rounded text-center cursor-default"
             >
@@ -557,6 +920,34 @@ function Stack() {
             </motion.div>
           ))}
         </div>
+
+        {/* Model Arsenal */}
+        <div>
+          <h3 className="text-xl font-bold font-mono mb-4 text-[var(--text-primary)] flex items-center gap-2">
+            <Brain size={20} weight="duotone" className="text-[var(--accent)]" />
+            AI Model Arsenal & Task Routing
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {models.map((model, i) => (
+              <motion.div
+                key={model.name}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.04 }}
+                whileHover={{ borderColor: "var(--accent)" }}
+                className="border-glow p-5 bg-[var(--bg-card)] rounded"
+              >
+                <h4 className="font-mono text-sm font-semibold mb-1 text-[var(--accent)]">
+                  {model.name}
+                </h4>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  {model.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -564,16 +955,20 @@ function Stack() {
 
 function Education() {
   return (
-    <section className="py-24 px-6">
-      <div className="max-w-[1100px] mx-auto">
+    <section className="py-20 px-6 bg-[var(--bg-card)]/30 border-t border-[var(--border)]">
+      <div className="max-w-[1140px] mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-12"
         >
-          <p className="font-techno text-xs text-[var(--accent)] tracking-widest mb-4">BACKGROUND</p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Education</h2>
+          <p className="font-techno text-xs text-[var(--accent)] tracking-widest mb-3 font-semibold">
+            ACADEMIC FOUNDATION
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            Education & Background
+          </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -584,10 +979,13 @@ function Education() {
             whileHover={{ borderColor: "var(--accent)" }}
             className="border-glow p-6 bg-[var(--bg-card)] rounded"
           >
-            <div className="font-mono text-xs text-[var(--text-secondary)] mb-3">2021 - 2024</div>
-            <h3 className="font-semibold mb-1">Bachelor of Arts, English Honours</h3>
+            <div className="font-mono text-xs text-[var(--accent)] mb-2 font-semibold">2021 – 2024</div>
+            <h3 className="font-semibold text-base mb-1">Bachelor of Arts, English Honours</h3>
             <p className="text-sm text-[var(--text-secondary)]">
               Kalipada Ghosh Tarai Mahavidyalaya, Siliguri
+            </p>
+            <p className="text-xs text-[var(--text-secondary)] mt-2 font-mono">
+              Advanced critical reading, synthesis, prompt reasoning & narrative structure
             </p>
           </motion.div>
 
@@ -598,13 +996,13 @@ function Education() {
             whileHover={{ borderColor: "var(--accent)" }}
             className="border-glow p-6 bg-[var(--bg-card)] rounded"
           >
-            <div className="font-mono text-xs text-[var(--text-secondary)] mb-3">2019 - 2021</div>
-            <h3 className="font-semibold mb-1">Class 12, Commerce</h3>
+            <div className="font-mono text-xs text-[var(--accent)] mb-2 font-semibold">2019 – 2021</div>
+            <h3 className="font-semibold text-base mb-1">Class 12, Commerce</h3>
             <p className="text-sm text-[var(--text-secondary)]">
               BSF Senior Secondary Residential School
             </p>
-            <p className="text-xs text-[var(--text-secondary)] mt-1 font-mono">
-              ACCOUNTS / BUSINESS STUDIES / ECONOMICS
+            <p className="text-xs text-[var(--text-secondary)] mt-2 font-mono">
+              Accounts • Business Studies • Economics • Financial Systems
             </p>
           </motion.div>
         </div>
@@ -615,42 +1013,54 @@ function Education() {
 
 function Contact() {
   return (
-    <section id="contact" className="py-24 px-6 bg-[var(--bg-card)]/30">
-      <div className="max-w-[1100px] mx-auto">
+    <section id="contact" className="py-24 px-6 relative">
+      <div className="max-w-[1140px] mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-14"
         >
-          <p className="font-techno text-xs text-[var(--accent)] tracking-widest mb-4">GET IN TOUCH</p>
+          <p className="font-techno text-xs text-[var(--accent)] tracking-widest mb-3 font-semibold">
+            LET&apos;S CONNECT
+          </p>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Contact
+            Connect & Collaborate
           </h2>
-          <p className="text-[var(--text-secondary)] max-w-[600px]">
-            Building AI systems and data tools. Open to collaborations.
+          <p className="text-[var(--text-secondary)] max-w-[620px] leading-relaxed">
+            Excited to connect with organizers, fellow developers, and speakers at Google DevFest in town. Available for AI systems consulting, open-source projects, and client automation through Zenvix Solutions.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
+            {
+              href: "https://www.zenvix.solutions",
+              icon: Globe,
+              label: "Company Website",
+              value: "zenvix.solutions",
+              note: "Founder & Solutions",
+            },
             {
               href: "mailto:jhakunal471@gmail.com",
               icon: EnvelopeSimple,
-              label: "Email",
+              label: "Direct Email",
               value: "jhakunal471@gmail.com",
+              note: "Get in touch directly",
             },
             {
               href: "https://github.com/yokunal",
               icon: GithubLogo,
               label: "GitHub",
               value: "github.com/yokunal",
+              note: "Open-source repos & code",
             },
             {
               href: "https://linkedin.com/in/kunaljha",
               icon: LinkedinLogo,
               label: "LinkedIn",
-              value: "linkedin.com/in/kunaljha",
+              value: "in/kunaljha",
+              note: "Professional network",
             },
           ].map((item, i) => (
             <motion.a
@@ -661,13 +1071,20 @@ function Contact() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.08 }}
               whileHover={{ y: -4, borderColor: "var(--accent)" }}
-              className="border-glow card-hover p-6 bg-[var(--bg-card)] rounded flex flex-col items-start"
+              className="border-glow card-hover p-6 bg-[var(--bg-card)] rounded-lg flex flex-col justify-between"
             >
-              <item.icon size={28} weight="duotone" className="text-[var(--accent)] mb-4" />
-              <h3 className="font-semibold mb-1">{item.label}</h3>
-              <p className="text-sm text-[var(--text-secondary)] font-mono">{item.value}</p>
+              <div>
+                <item.icon size={30} weight="duotone" className="text-[var(--accent)] mb-3" />
+                <h3 className="font-semibold text-sm mb-1">{item.label}</h3>
+                <p className="text-sm text-[var(--text-primary)] font-mono font-medium truncate">
+                  {item.value}
+                </p>
+              </div>
+              <p className="text-[11px] text-[var(--text-secondary)] mt-4 font-mono">
+                {item.note} →
+              </p>
             </motion.a>
           ))}
         </div>
@@ -678,14 +1095,18 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="py-8 px-6 border-t border-[var(--border)]">
-      <div className="max-w-[1100px] mx-auto flex items-center justify-between text-sm">
-        <p className="font-mono text-xs text-[var(--text-secondary)]">
-          Built with Next.js and Tailwind CSS
-        </p>
-        <p className="font-mono text-xs text-[var(--text-secondary)]">
-          v1.0.0
-        </p>
+    <footer className="py-10 px-6 border-t border-[var(--border)] bg-[var(--bg-secondary)]/50">
+      <div className="max-w-[1140px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[var(--text-secondary)]">
+        <div className="flex items-center gap-2">
+          <span className="font-bold text-[var(--text-primary)]">KUNAL JHA</span>
+          <span>•</span>
+          <span>Founder @ <a href="https://www.zenvix.solutions" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Zenvix Solutions</a></span>
+        </div>
+        <div className="flex items-center gap-4">
+          <span className="text-amber-400 font-semibold">Ready for Google DevFest 2026</span>
+          <span>•</span>
+          <span>Built with Next.js & Netlify</span>
+        </div>
       </div>
     </footer>
   );
@@ -697,9 +1118,9 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Stats />
-      <Philosophy />
-      <Models />
+      <FounderSection />
       <Projects />
+      <DevFestHighlight />
       <Stack />
       <Education />
       <Contact />
