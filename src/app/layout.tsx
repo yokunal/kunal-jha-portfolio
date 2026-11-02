@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Kunal Jha | Founder @ Zenvix Solutions & AI Systems Architect",
+  title: "Kunal Jha | Founder @ Zenvix Solutions (Siliguri) & AI Systems Architect",
   description:
-    "Portfolio of Kunal Jha - Founder of Zenvix Solutions (www.zenvix.solutions). AI Systems Engineer building autonomous agent swarms, high-performance Rust engines, and Google Cloud automations.",
+    "Portfolio of Kunal Jha - Founder of Zenvix Solutions (www.zenvix.solutions) based in Siliguri. AI Systems Engineer building autonomous agent swarms, high-performance Rust engines, and Google Cloud automations.",
   icons: {
     icon: [
       {

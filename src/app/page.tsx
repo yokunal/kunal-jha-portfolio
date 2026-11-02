@@ -193,7 +193,7 @@ const stats = [
   { value: "4+", label: "Core AI Architectures" },
   { value: "10M+", label: "Data Records Processed" },
   { value: "0", label: "Bib Concurrency Collisions" },
-  { value: "Founder", label: "Zenvix Solutions" },
+  { value: "Founder", label: "Zenvix Solutions (Siliguri)" },
 ];
 
 function TerminalText({ texts, delay = 2200 }: { texts: string[]; delay?: number }) {
@@ -386,7 +386,7 @@ function Hero() {
               >
                 Zenvix Solutions (zenvix.solutions)
               </a>
-              . I architect autonomous multi-agent swarms, high-performance systems in Rust, and enterprise-grade Google Workspace & Cloud automation workflows that power real businesses.
+              , based in Siliguri. I architect autonomous multi-agent swarms, high-performance systems in Rust, and enterprise-grade Google Workspace & Cloud automation workflows that power real businesses.
             </p>
 
             {/* Location & Tags */}
@@ -566,20 +566,23 @@ function FounderSection() {
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
                 Founder at <span className="text-gradient">Zenvix Solutions</span>
               </h2>
-              <p className="text-lg font-mono text-[var(--accent)]">
+              <div className="flex flex-wrap items-center gap-3">
                 <a
                   href="https://www.zenvix.solutions"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:underline inline-flex items-center gap-1.5"
+                  className="text-lg font-mono text-[var(--accent)] hover:underline inline-flex items-center gap-1.5"
                 >
                   www.zenvix.solutions <ArrowUpRight size={18} />
                 </a>
-              </p>
+                <span className="text-xs font-mono text-[var(--text-secondary)] px-2 py-0.5 rounded bg-[var(--bg-primary)] border border-[var(--border)]">
+                  Based in Siliguri, West Bengal
+                </span>
+              </div>
             </div>
 
             <p className="text-[var(--text-secondary)] leading-relaxed">
-              As the founder of Zenvix Solutions, I help modern businesses and enterprises deploy autonomous AI agents, resilient web scraping engines, and high-concurrency cloud automations. From designing bespoke multi-agent workflows to commercial software prototypes, Zenvix translates complex AI paradigms into production revenue.
+              As the founder of Zenvix Solutions based in Siliguri, I help modern businesses and enterprises deploy autonomous AI agents, resilient web scraping engines, and high-concurrency cloud automations. From designing bespoke multi-agent workflows to commercial software prototypes, Zenvix translates complex AI paradigms into production revenue.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
@@ -1100,7 +1103,7 @@ function Footer() {
         <div className="flex items-center gap-2">
           <span className="font-bold text-[var(--text-primary)]">KUNAL JHA</span>
           <span>•</span>
-          <span>Founder @ <a href="https://www.zenvix.solutions" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Zenvix Solutions</a></span>
+          <span>Founder @ <a href="https://www.zenvix.solutions" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Zenvix Solutions</a> (Siliguri)</span>
         </div>
         <div className="flex items-center gap-4">
           <span className="text-amber-400 font-semibold">Ready for Google DevFest 2026</span>
