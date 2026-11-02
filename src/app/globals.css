@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #12121a;
-  --bg-card: #1a1a24;
-  --text-primary: #f0f0f5;
-  --text-secondary: #8888a0;
-  --accent: #00D4AA;
-  --accent-dim: #00D4AA33;
-  --accent-glow: 0 0 20px #00D4AA50;
-  --border: #2a2a3a;
+  --bg-primary: #000000;
+  --bg-secondary: #08080a;
+  --bg-card: #0f0f13;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --accent: #ffffff;
+  --accent-dim: rgba(255, 255, 255, 0.12);
+  --accent-glow: 0 0 25px rgba(255, 255, 255, 0.2);
+  --border: #222228;
   --radius: 8px;
   --radius-sm: 4px;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --bg-primary: #f5f5fa;
-    --bg-secondary: #ffffff;
-    --bg-card: #ffffff;
-    --text-primary: #0a0a15;
-    --text-secondary: #5a5a70;
-    --accent: #00875A;
-    --accent-dim: #00875A20;
-    --accent-glow: 0 0 20px #00875A30;
-    --border: #e0e0ea;
+    --bg-primary: #000000;
+    --bg-secondary: #08080a;
+    --bg-card: #0f0f13;
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --accent: #ffffff;
+    --accent-dim: rgba(255, 255, 255, 0.12);
+    --accent-glow: 0 0 25px rgba(255, 255, 255, 0.2);
+    --border: #222228;
   }
 }
 
@@ -49,15 +49,15 @@ body {
   font-family: "Cabinet Grotesk", system-ui, sans-serif;
   line-height: 1.6;
   background-image:
-    linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 40px 40px;
   background-position: center center;
 }
 
 ::selection {
-  background: var(--accent);
-  color: #0a0a0f;
+  background: #ffffff;
+  color: #000000;
 }
 
 ::-webkit-scrollbar {
@@ -74,7 +74,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 @keyframes pulse-dot {
@@ -89,17 +89,12 @@ body {
 
 @keyframes glow {
   0%, 100% { box-shadow: 0 0 20px var(--accent-dim); }
-  50% { box-shadow: 0 0 30px var(--accent-dim), 0 0 40px var(--accent-dim); }
+  50% { box-shadow: 0 0 35px var(--accent-dim), 0 0 45px var(--accent-dim); }
 }
 
 @keyframes scan-line {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100vh); }
-}
-
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
 }
 
 .animate-pulse-dot {
@@ -116,7 +111,7 @@ body {
 
 .animate-scan {
   animation: scan-line 8s linear infinite;
-  opacity: 0.03;
+  opacity: 0.02;
 }
 
 .font-display {
@@ -138,10 +133,10 @@ body {
 
 @layer utilities {
   .glass {
-    background: rgba(18, 18, 26, 0.8);
+    background: rgba(8, 8, 10, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(0, 212, 170, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .glow-border {
@@ -149,7 +144,7 @@ body {
   }
 
   .accent-gradient {
-    background: linear-gradient(135deg, var(--accent), #00ffcc);
+    background: linear-gradient(135deg, #ffffff, #71717a);
   }
 
   .card-hover {
@@ -158,12 +153,12 @@ body {
 
   .card-hover:hover {
     transform: translateY(-2px);
-    box-shadow: var(--accent-glow);
-    border-color: var(--accent);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.35);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, var(--text-primary), var(--accent));
+    background: linear-gradient(135deg, #ffffff 30%, #a1a1aa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -175,20 +170,21 @@ body {
   }
 
   .border-glow:hover {
-    border-color: var(--accent);
-    box-shadow: inset 0 0 20px var(--accent-dim);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.06);
   }
 
   .btn-primary {
-    background: var(--accent);
-    color: #0a0a0f;
+    background: #ffffff;
+    color: #000000;
     font-weight: 600;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .btn-primary:hover {
-    filter: brightness(1.1);
+    background: #f4f4f5;
     transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
   }
 
   .btn-primary:active {
