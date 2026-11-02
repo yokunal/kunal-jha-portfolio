@@ -57,6 +57,16 @@ This file documents the exact color tokens used in the portfolio so we can pull,
 
 ---
 
+## 🖋️ Typography Hierarchy
+
+| Role | Font | CSS Variable / Class | Where It's Applied |
+| :--- | :--- | :--- | :--- |
+| **Display** | **Sora** | `--font-display`, `.font-display`, `h1-h4` | Name branding (`KUNAL JHA`), section titles, and project card titles |
+| **Body** | **Geist** | `--font-sans`, `body` | Paragraphs, descriptions, bullet points, summaries |
+| **Technical** | **JetBrains Mono** | `--font-mono`, `.font-mono`, `.font-techno` | Navbar links, badges, tech tags, bash terminal session, years, and metrics |
+
+---
+
 ## ⚡ How to Switch / Pull Any Theme:
 To switch to a new color palette, just tell Friday:
 1. Provide a color name (e.g., *"give me champagne gold and pitch black"*, *"deep sapphire blue"*, or *"revert to cyber teal"*).
