@@ -302,14 +302,14 @@ function Hero() {
           >
             {/* Top Badges */}
             <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 border border-white/25 rounded-sm bg-white/5 shadow-[0_0_15px_rgba(255,255,255,0.08)]">
-                <span className="w-2 h-2 bg-white rounded-full animate-pulse-dot" />
-                <span className="font-techno text-xs text-white font-semibold tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1 border border-[var(--accent)]/30 rounded-sm bg-[var(--accent)]/10 shadow-[0_0_15px_var(--accent-dim)]">
+                <span className="w-2 h-2 bg-[var(--accent)] rounded-full animate-pulse-dot" />
+                <span className="font-techno text-xs text-[var(--accent)] font-semibold tracking-wider">
                   FOUNDER @ ZENVIX SOLUTIONS
                 </span>
               </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 border border-white/20 rounded-sm bg-white/5 text-zinc-300 font-mono text-xs">
-                <Sparkle size={13} weight="fill" className="text-white" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 border border-[var(--border)] rounded-sm bg-[var(--bg-card)] text-[var(--text-secondary)] font-mono text-xs">
+                <Sparkle size={13} weight="fill" className="text-[var(--accent)]" />
                 <span>Google DevFest Candidate 2026</span>
               </div>
             </div>
@@ -397,7 +397,7 @@ function Hero() {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
                 href="#projects"
-                className="btn-primary px-5 py-2.5 rounded font-mono text-sm inline-flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+                className="btn-primary px-5 py-2.5 rounded font-mono text-sm inline-flex items-center gap-2 shadow-sm"
               >
                 <RocketLaunch size={16} weight="bold" />
                 Explore Projects
@@ -576,7 +576,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       whileHover={{ y: -4 }}
       className={`card-hover p-6 sm:p-7 bg-[var(--bg-card)] border rounded-lg flex flex-col justify-between ${
         project.featured
-          ? "border-[var(--accent)]/40 shadow-[0_0_20px_rgba(255,255,255,0.08)]"
+          ? "border-[var(--accent)]/40 shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
           : "border-[var(--border)]"
       }`}
     >
@@ -588,7 +588,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               {project.badge}
             </span>
             {project.featured && (
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono text-white bg-white/10 border border-white/20 flex items-center gap-1">
+              <span className="px-2 py-0.5 rounded text-[10px] font-mono text-[var(--accent)] bg-[var(--accent)]/10 border border-[var(--accent)]/30 flex items-center gap-1">
                 <Sparkle size={11} weight="fill" />
                 KEY HIGHLIGHT
               </span>
@@ -714,7 +714,7 @@ function Projects() {
               onClick={() => setFilter("all")}
               className={`px-3 py-1.5 rounded text-xs font-mono transition-colors ${
                 filter === "all"
-                  ? "bg-[var(--accent)] text-[#000000] font-bold"
+                  ? "bg-[var(--accent)] text-[var(--bg-primary)] font-bold"
                   : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
@@ -724,7 +724,7 @@ function Projects() {
               onClick={() => setFilter("core")}
               className={`px-3 py-1.5 rounded text-xs font-mono transition-colors ${
                 filter === "core"
-                  ? "bg-[var(--accent)] text-[#000000] font-bold"
+                  ? "bg-[var(--accent)] text-[var(--bg-primary)] font-bold"
                   : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >

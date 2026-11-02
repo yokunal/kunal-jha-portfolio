@@ -4,7 +4,25 @@ This file documents the exact color tokens used in the portfolio so we can pull,
 
 ---
 
-## 🖤 Preset 1: `theme-midnight-black` (CURRENT ACTIVE)
+## 📜 Preset 1: `theme-ivory-canvas` (CURRENT ACTIVE)
+> **Vibe:** Editorial luxury & architectural minimalism. Warm soft ivory canvas with razor-sharp midnight black typography, obsidian accents, and crisp card surfaces.  
+> **Git Tag:** `theme-ivory-canvas`
+
+| Token | Name | Hex / Value | Description |
+| :--- | :--- | :--- | :--- |
+| `--bg-primary` | Soft Ivory Linen | `#FAF7F2` | Warm, luxurious off-white / soft ivory background |
+| `--bg-secondary` | Warm Sand Ivory | `#F0ECE1` | Subtle secondary sections & header fills |
+| `--bg-card` | Crisp Pure White | `#FFFFFF` | Elevated crisp white card surfaces |
+| `--text-primary` | Pitch Midnight Black | `#000000` | Ultra-sharp black headings & primary text |
+| `--text-secondary` | Deep Slate Zinc | `#52525B` | Readable slate/zinc secondary text (WCAG AAA) |
+| `--accent` | Obsidian Midnight | `#000000` | Signature buttons, badges, tabs & indicators |
+| `--accent-dim` | Subtle Black Tint | `rgba(0, 0, 0, 0.06)` | Pill backgrounds & badge fills |
+| `--accent-glow` | Soft Editorial Shadow | `0 4px 20px rgba(0, 0, 0, 0.08)` | Elegant card lift shadow |
+| `--border` | Warm Stone Wireframe | `#E5E0D5` | Clean, subtle ivory-stone card borders |
+
+---
+
+## 🖤 Preset 2: `theme-midnight-black` (ARCHIVED)
 > **Vibe:** Ultra-clean, high-contrast, stealth luxury AI lab.  
 > **Git Tag:** `theme-midnight-black`
 
@@ -22,7 +40,7 @@ This file documents the exact color tokens used in the portfolio so we can pull,
 
 ---
 
-## 🌿 Preset 2: `theme-cyber-teal` (ARCHIVED)
+## 🌿 Preset 3: `theme-cyber-teal` (ARCHIVED)
 > **Vibe:** Cyberpunk, terminal hacker, electric AI neon.  
 > **Git Tag:** `theme-cyber-teal`
 
