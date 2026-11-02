@@ -40,6 +40,22 @@ interface Project {
 
 const featuredProjects: Project[] = [
   {
+    name: "Nexus AI Terminal Engine",
+    tagline: "High-Performance Autonomous AI Terminal Agent Engine in Rust",
+    badge: "Systems & Rust",
+    category: "core",
+    featured: true,
+    description:
+      "Blazing-fast terminal AI coding agent harness engineered from scratch in Rust. Built on Tokio asynchronous runtime, interactive Ratatui terminal UI (TUI), Rusqlite local session memory, streaming Server-Sent Events (SSE), and Language Server Protocol (LSP) integrations for high-speed local code intelligence.",
+    highlights: [
+      "Zero-overhead asynchronous event loops powered by Tokio & Ratatui TUI",
+      "Embedded SQLite session storage & streaming SSE completion parser",
+      "Language Server Protocol (LSP) integration for workspace diagnostics",
+    ],
+    tech: ["Rust", "Tokio", "Ratatui TUI", "Rusqlite", "SSE Streaming", "LSP"],
+    github: "https://github.com/yokunal/nexus",
+  },
+  {
     name: "BizScout",
     tagline: "AI-Powered SMB Commercial Opportunity Finder & GitHub Intelligence Analyzer",
     badge: "AI & Market Intelligence",
@@ -84,39 +100,8 @@ const featuredProjects: Project[] = [
       "Deep structured data extraction via Firecrawl across top 4 US portals",
       "Automated cap rate, buyer/seller sentiment, and ROI calculations",
     ],
-    tech: ["Python", "Agno / LangChain", "Firecrawl Extract", "Streamlit", "LLM Swarms"],
+    tech: ["Python", "Agno / LangChain", "LangGraph", "Firecrawl Extract", "Streamlit"],
     github: "https://github.com/yokunal/realestate-agent1.0",
-  },
-  {
-    name: "Nexus AI Terminal Engine",
-    tagline: "High-Performance Autonomous AI Terminal Agent Engine in Rust",
-    badge: "Systems & Compilers",
-    category: "core",
-    featured: true,
-    description:
-      "Blazing-fast terminal AI coding agent harness engineered from scratch in Rust. Built on Tokio asynchronous runtime, interactive Ratatui terminal UI (TUI), Rusqlite local session memory, streaming Server-Sent Events (SSE), and Language Server Protocol (LSP) integrations for high-speed local code intelligence.",
-    highlights: [
-      "Zero-overhead asynchronous event loops powered by Tokio & Ratatui TUI",
-      "Embedded SQLite session storage & streaming SSE completion parser",
-      "Language Server Protocol (LSP) integration for workspace diagnostics",
-    ],
-    tech: ["Rust", "Tokio", "Ratatui TUI", "Rusqlite", "SSE Streaming", "LSP"],
-    github: "https://github.com/yokunal/nexus",
-  },
-  {
-    name: "Sunrise City Marathon 2026 Engine",
-    tagline: "High-Concurrency Google Workspace & Apps Script Registration Architecture",
-    badge: "Google Cloud & Workspace",
-    category: "google",
-    description:
-      "Complete enterprise-grade marathon registration and bib timing pipeline built on Google Apps Script (V8 Engine), Google Sheets as high-concurrency database, Google Forms, Drive API, and Gmail API. Features atomic concurrency locking (LockService) preventing duplicate bib numbers under peak traffic, automated UPI reconciliation, and instant branded runner badges.",
-    highlights: [
-      "Atomic Concurrency Locking via LockService for zero bib collision",
-      "Automated Google Drive receipt indexing & UPI duplicate validation",
-      "Quota-safe Gmail API queueing & branded HTML runner badge delivery",
-    ],
-    tech: ["Google Apps Script (V8)", "Google Sheets DB", "Google Forms", "Drive API", "Gmail API", "LockService"],
-    github: "https://github.com/yokunal/marathon_production",
   },
   {
     name: "Autonomous Loop",
@@ -148,51 +133,38 @@ const featuredProjects: Project[] = [
     tech: ["Python", "Google Sheets API", "Gemini AI", "Streamlit", "Pandas"],
     github: "https://github.com/yokunal/tution_dashboard_new",
   },
-  {
-    name: "Bumblebee Endpoint Scanner",
-    tagline: "Read-Only Developer Endpoint Scanner for Supply-Chain Compromises",
-    badge: "Security & Systems",
-    category: "client",
-    description:
-      "High-speed developer endpoint security scanner written in Go. Analyzes on-disk package manifests, developer extensions, and build tool metadata to identify exposure to known software supply-chain compromises.",
-    highlights: [
-      "High-concurrency Go filesystem scanner",
-      "Supply-chain CVE & compromised dependency matching",
-      "Zero side-effect read-only audit engine",
-    ],
-    tech: ["Go (Golang)", "Static Analysis", "Security Audit", "CLI"],
-    github: "https://github.com/yokunal/bumblebee",
-  },
 ];
 
 const models = [
-  { name: "Gemini 1.5 & Flash", desc: "Long-context reasoning, multimodal analysis & high-speed extraction" },
-  { name: "Claude 3.5 Sonnet", desc: "Complex agent reasoning, architectural planning & code synthesis" },
-  { name: "MiniMax M2.7", desc: "Structured commercial repository evaluation & cost-efficient scoring" },
-  { name: "GPT-4o & 4o-mini", desc: "Structured JSON function calling & rapid conversational completions" },
-  { name: "Sentence Transformers", desc: "Local vector embeddings for semantic resume-to-job matching" },
-  { name: "XGBoost & Scikit-Learn", desc: "Tabular machine learning, classification & revenue regression" },
+  { name: "JEV by TypeSafe", desc: "System One schema-bound probabilistic decision engine with zero type errors and zero hallucination" },
+  { name: "SubQ (Subquadratic)", desc: "Subquadratic Sparse Attention LLM scaling to 12M+ token contexts with ultra-low latency inference" },
+  { name: "LangChain & LangGraph", desc: "Cyclic stateful graph workflows, multi-agent coordination, and memory persistence" },
+  { name: "Gemini 1.5 & Flash", desc: "Long-context reasoning, multimodal document analysis & high-speed data extraction" },
+  { name: "Claude 3.5 Sonnet", desc: "Complex agent reasoning, architectural planning & full-stack code synthesis" },
+  { name: "Sentence Transformers", desc: "Local vector embeddings for semantic resume-to-job matching & retrieval" },
 ];
 
 const stack = [
-  { name: "Python", icon: "PY" },
   { name: "Rust", icon: "RS" },
+  { name: "Python", icon: "PY" },
   { name: "TypeScript", icon: "TS" },
-  { name: "Google Apps Script", icon: "GAS" },
+  { name: "n8n", icon: "N8N" },
+  { name: "AWS", icon: "AWS" },
+  { name: "LangChain", icon: "LC" },
+  { name: "LangGraph", icon: "LG" },
   { name: "Next.js", icon: "NX" },
   { name: "Tokio", icon: "TK" },
-  { name: "LangChain / Agno", icon: "LC" },
   { name: "Firecrawl", icon: "FC" },
-  { name: "Google Cloud / APIs", icon: "GCP" },
+  { name: "Google Cloud", icon: "GCP" },
   { name: "SQLite / Postgres", icon: "SQL" },
   { name: "Docker", icon: "DC" },
   { name: "Tailwind CSS", icon: "TW" },
 ];
 
 const stats = [
-  { value: "4+", label: "Core AI Architectures" },
+  { value: "Nexus", label: "Rust AI Engine" },
   { value: "10M+", label: "Data Records Processed" },
-  { value: "0", label: "Bib Concurrency Collisions" },
+  { value: "SubQ & JEV", label: "Next-Gen AI Arsenal" },
   { value: "Founder", label: "Zenvix Solutions (Siliguri)" },
 ];
 
@@ -364,12 +336,14 @@ function Hero() {
               </div>
               <TerminalText
                 texts={[
-                  "founder @ zenvix.solutions — building automated client pipelines...",
+                  "nexus: high-performance terminal ai harness engineered in rust...",
+                  "founder @ zenvix.solutions (siliguri) — building automated client pipelines...",
                   "bizscout: mining smb commercial opportunities across github...",
                   "jobspy & scraper 2.0: multi-board concurrent job aggregation...",
                   "ai-real-estate: orchestrating autonomous 3-agent property swarms...",
-                  "nexus: engineered high-performance terminal ai harness in rust...",
-                  "google apps script: zero-collision marathon concurrency engine...",
+                  "n8n & aws: event-driven serverless cloud workflows...",
+                  "langchain & langgraph: cyclic multi-agent graph workflows...",
+                  "jev by typesafe & subq (ssa): next-gen schema-bound decision models...",
                   "ready to build, demo, and connect at google devfest 2026...",
                 ]}
               />
@@ -400,12 +374,13 @@ function Hero() {
             {/* Quick Skills Pills */}
             <div className="flex flex-wrap gap-2">
               {[
-                "Autonomous Agents",
-                "Rust (Tokio / Ratatui)",
-                "Google Workspace & Apps Script",
+                "Nexus (Rust)",
                 "BizScout",
+                "n8n & AWS",
+                "LangChain & LangGraph",
+                "JEV by TypeSafe",
+                "SubQ (SSA)",
                 "Multi-Board Scraping",
-                "Sentence Transformers",
                 "Next.js / TypeScript",
               ].map((skill, i) => (
                 <motion.span
@@ -838,12 +813,12 @@ function DevFestHighlight() {
             <div className="w-10 h-10 rounded border border-[var(--accent)]/30 bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]">
               <Cpu size={20} weight="duotone" />
             </div>
-            <h3 className="font-mono font-bold text-base">Google Apps Script V8 Engine</h3>
+            <h3 className="font-mono font-bold text-base">Google Antigravity CLI (agy)</h3>
             <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-              Architected high-concurrency race registration with atomic <code className="text-[var(--accent)]">LockService</code> to eliminate bib collision and race-condition double bookings under extreme user surges.
+              Crafted autonomous self-repair coding loops for Google Antigravity CLI (<code className="text-[var(--accent)]">agy</code>) and Claude Code with a 9-step state machine and anti-stuck self-repair protocol.
             </p>
             <div className="text-[11px] font-mono text-[var(--accent)]">
-              Sunrise City Marathon 2026
+              Autonomous Loop Framework
             </div>
           </motion.div>
 
@@ -854,12 +829,12 @@ function DevFestHighlight() {
             <div className="w-10 h-10 rounded border border-[var(--accent)]/30 bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]">
               <Database size={20} weight="duotone" />
             </div>
-            <h3 className="font-mono font-bold text-base">Google Sheets DB & Drive Sync</h3>
+            <h3 className="font-mono font-bold text-base">Google Sheets API & Cloud Sync</h3>
             <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-              Treated Google Sheets as an ACID-safe relational database with structured checksums, automated UPI payment receipt indexing in Google Drive, and automated duplicate prevention.
+              High-reliability two-way data pipelines syncing structured student records, attendance, and analytics live with cloud spreadsheets via Google Sheets API.
             </p>
             <div className="text-[11px] font-mono text-[var(--accent)]">
-              Production Google Drive API
+              Tutoring Management Dashboard
             </div>
           </motion.div>
 
@@ -870,12 +845,12 @@ function DevFestHighlight() {
             <div className="w-10 h-10 rounded border border-[var(--accent)]/30 bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]">
               <Brain size={20} weight="duotone" />
             </div>
-            <h3 className="font-mono font-bold text-base">Google Gemini & Antigravity CLI</h3>
+            <h3 className="font-mono font-bold text-base">Google Gemini Multimodal AI</h3>
             <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-              Crafted autonomous self-repair coding loops for Google Antigravity CLI (<code className="text-[var(--accent)]">agy</code>) alongside multimodal Gemini models for automated student analytics and progress synthesis.
+              Leveraging Google Gemini models for long-context semantic reasoning, automated progress report summarization, and high-density knowledge extraction.
             </p>
             <div className="text-[11px] font-mono text-[var(--accent)]">
-              Autonomous Loop + Gemini AI
+              Gemini AI Integration
             </div>
           </motion.div>
         </div>
