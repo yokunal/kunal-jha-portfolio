@@ -161,13 +161,6 @@ const stack = [
   { name: "Tailwind CSS", icon: "TW" },
 ];
 
-const stats = [
-  { value: "Nexus", label: "Rust AI Engine" },
-  { value: "10M+", label: "Data Records Processed" },
-  { value: "SubQ & JEV", label: "Next-Gen AI Arsenal" },
-  { value: "Founder", label: "Zenvix Solutions (Siliguri)" },
-];
-
 function TerminalText({ texts, delay = 2200 }: { texts: string[]; delay?: number }) {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -488,34 +481,6 @@ function Hero() {
               </div>
             </div>
           </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Stats() {
-  return (
-    <section className="py-14 px-6 border-y border-[var(--border)] bg-[var(--bg-card)]/50 relative">
-      <div className="max-w-[1140px] mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="text-center p-4 rounded bg-[var(--bg-secondary)]/50 border border-[var(--border)]"
-            >
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--accent)] font-mono">
-                {stat.value}
-              </div>
-              <div className="font-techno text-[11px] sm:text-xs text-[var(--text-secondary)] mt-2 tracking-wider">
-                {stat.label.toUpperCase()}
-              </div>
-            </motion.div>
-          ))}
         </div>
       </div>
     </section>
@@ -1014,7 +979,6 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
-      <Stats />
       <FounderSection />
       <Projects />
       <Stack />
