@@ -308,10 +308,6 @@ function Hero() {
                   FOUNDER @ ZENVIX SOLUTIONS
                 </span>
               </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 border border-[var(--border)] rounded-sm bg-[var(--bg-card)] text-[var(--text-secondary)] font-mono text-xs">
-                <Sparkle size={13} weight="fill" className="text-[var(--accent)]" />
-                <span>Google DevFest Candidate 2026</span>
-              </div>
             </div>
 
             {/* Name & Title */}
@@ -342,7 +338,7 @@ function Hero() {
                   "n8n & aws: event-driven serverless cloud workflows...",
                   "langchain & langgraph: cyclic multi-agent graph workflows...",
                   "jev by typesafe & subq (ssa): next-gen schema-bound decision models...",
-                  "ready to build, demo, and connect at google devfest 2026...",
+                  "ready to architect, demo, and deploy production ai systems...",
                 ]}
               />
             </div>
@@ -890,7 +886,7 @@ function Contact() {
             Connect & Collaborate
           </h2>
           <p className="text-[var(--text-secondary)] max-w-[620px] leading-relaxed">
-            Excited to connect with organizers, fellow developers, and speakers at Google DevFest in town. Available for AI systems consulting, open-source projects, and client automation through Zenvix Solutions.
+            Available for AI systems consulting, high-throughput autonomous workflows, open-source engineering, and enterprise client automation through Zenvix Solutions.
           </p>
         </motion.div>
 
